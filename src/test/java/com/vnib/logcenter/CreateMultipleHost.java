@@ -4,26 +4,22 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import commons.AbstractTest;
-import commons.GlobalConstants;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class CreateHost extends AbstractTest {
+public class CreateMultipleHost{
 
 	WebDriver driver;
 	List<WebElement> elements;
@@ -37,7 +33,7 @@ public class CreateHost extends AbstractTest {
 	String username = "logcenter";
 	String password = "!1q2w3e4r5t";
 
-	// Group Data (Manual Create with Group Name: 1-->6 in server)
+	// Group Data (Manual Create with Group Name: 1 --> 6 in server)
 	String groupName_TC01 = "1";
 	String groupName_TC02 = "2";
 	String groupName_TC03 = "3";
@@ -79,7 +75,6 @@ public class CreateHost extends AbstractTest {
 	By saveHostButton = By.xpath("//button[@class='btn btn-loading btn-primary']");
 	By cancelHostButton = By.xpath("//div[@role='dialog']//div[@class='modal-dialog modal-dialog-centered']//div[@class='modal-footer']//button[contains(text(),'Cancel')]");
 
-	// Code xử phần Error popup
 	By undefinedErrorPopup = By.xpath("//div[@class='modal-header']//h5[contains(text(),'Error')]");
 	By okButtonPopup = By.xpath("//div[@class='modal-footer']//button[contains(text(),'Ok')]");
 
@@ -339,12 +334,6 @@ public class CreateHost extends AbstractTest {
 		return number;
 	}
 
-	public int randomNumberHost() {
-		Random rand = new Random();
-		int number = rand.nextInt(255);
-		return number;
-	}
-
 	public void scrollToElement(By locatorXpath) {
 		element = driver.findElement(locatorXpath);
 		jsExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
@@ -352,7 +341,7 @@ public class CreateHost extends AbstractTest {
 
 	public void waitToElementClickable(By locator) {
 		element = driver.findElement(locator);
-		waitExplicit = new WebDriverWait(driver, GlobalConstants.SHORT_TIMEOUT);
+		waitExplicit = new WebDriverWait(driver, 5);
 		waitExplicit.until(ExpectedConditions.elementToBeClickable(element));
 	}
 
