@@ -1,5 +1,6 @@
 package com.vnib.logcenter;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -29,9 +30,9 @@ public class CreateMultipleHost{
 	WebDriverWait waitExplicit;
 
 	//Login Data
-	String linkServer = "https://14.241.224.35:9443/";
-	String username = "logcenter";
-	String password = "!1q2w3e4r5t";
+	String linkServer = "https://aaaaaa/";
+	String username = "aaaaaaa";
+	String password = "aaaaa";
 
 	// Group Data (Manual Create with Group Name: 1 --> 6 in server)
 	String groupName_TC01 = "1";
@@ -42,12 +43,12 @@ public class CreateMultipleHost{
 	String groupName_TC06 = "6";
 
 	//Host ip
-	String hostIP_TC01 = "99.99.22.";
-	String hostIP_TC02 = "99.100.12.";
-	String hostIP_TC03 = "99.101.10.";
-	String hostIP_TC04 = "99.102.8.";
-	String hostIP_TC05 = "99.103.8.";
-	String hostIP_TC06 = "99.104.9.";
+	String hostIP_TC01 = "99.99.62.";
+	String hostIP_TC02 = "99.100.52.";
+	String hostIP_TC03 = "99.101.50.";
+	String hostIP_TC04 = "99.102.49.";
+	String hostIP_TC05 = "99.103.48.";
+	String hostIP_TC06 = "99.104.48.";
 
 	//Timezone name data
 	String timeZone="(UTC-10:00) Hawaii";
@@ -84,7 +85,6 @@ public class CreateMultipleHost{
 
 		 WebDriverManager.chromedriver().setup();
 		 driver = new ChromeDriver();
-
 		jsExecutor = (JavascriptExecutor) driver;
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
@@ -118,7 +118,9 @@ public class CreateMultipleHost{
 			selectItemInCustomDropdown(timezoneButton, itemsTimezoneList,timeZone);
 			driver.findElement(saveHostButton).click();
 			Thread.sleep(1000);
-			if (driver.findElement(By.xpath("//div[@class='modal-header']//h5[contains(text(),'Error')]")).isDisplayed() == true) {
+			
+			System.out.println();
+			if (driver.findElement(By.xpath("//div[@class='modal-header']//h5[contains(text(),'Error')]")).isEnabled() == true) {
 				driver.findElement(okButtonPopup).click();
 				driver.findElement(cancelHostButton).click();
 			} else {
