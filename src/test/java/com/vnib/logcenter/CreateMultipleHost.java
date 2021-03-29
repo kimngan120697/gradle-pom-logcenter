@@ -1,6 +1,5 @@
 package com.vnib.logcenter;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -30,9 +29,9 @@ public class CreateMultipleHost{
 	WebDriverWait waitExplicit;
 
 	//Login Data
-	String linkServer = "https://aaaaaa/";
-	String username = "aaaaaaa";
-	String password = "aaaaa";
+	String linkServer = "https://14.241.224.35:9443/";
+	String username = "logcenter";
+	String password = "!1q2w3e4r5t";
 
 	// Group Data (Manual Create with Group Name: 1 --> 6 in server)
 	String groupName_TC01 = "1";
